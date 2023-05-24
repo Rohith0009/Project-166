@@ -42,4 +42,47 @@ endyComboBox = ttk.Combobox(root, state="readonly", values=cords, width=10)
 endy.place(anchor=CENTER, relx=0.86, rely=0.93)
 endyComboBox.place(anchor=CENTER, relx=0.93, rely=0.93)
 
+def draw(startx_value, starty_value, endx_value, endy_value, keypress):
+    MrColor = CCComboBox.get()
+
+    if keypress == "c":
+        print(f"{endx_value} {endy_value} {startx_value} {starty_value}")
+        canvas.create_oval(endx_value, endy_value, startx_value, starty_value,  width = 3, fill = MrColor)
+        print("c")
+
+    if keypress == "r":
+        canvas.create_rectangle(startx_value, starty_value, endx_value, endy_value, width = 3, fill = MrColor)
+
+    if keypress == "l":
+        canvas.create_line(startx_value, starty_value, endx_value, endy_value, width = 3, fill = MrColor)
+
+
+def circle(event):
+    startx_value = startxComboBox.get()
+    starty_value = startyComboBox.get()
+    endx_value = endxComboBox.get()
+    endy_value = endyComboBox.get()
+    keypress = "c"
+    draw(startx_value, starty_value, endx_value, endy_value, keypress)
+
+def rectangle(event):
+    startx_value = startxComboBox.get()
+    starty_value = startyComboBox.get()
+    endx_value = endxComboBox.get()
+    endy_value = endyComboBox.get()
+    keypress = "r"
+    draw(startx_value, starty_value, endx_value, endy_value, keypress)
+
+def line(event):
+    startx_value = startxComboBox.get()
+    starty_value = startyComboBox.get()
+    endx_value = endxComboBox.get()
+    endy_value = endyComboBox.get()
+    keypress = "l"
+    draw(startx_value, starty_value, endx_value, endy_value, keypress)
+
+root.bind("<c>", circle)
+root.bind("<r>", rectangle)
+root.bind("<l>", line)
+
 root.mainloop()
